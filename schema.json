@@ -1,0 +1,13 @@
+{
+	"urls": {
+		"asdgbs3423": {
+			"source": "aB",
+			"destination": "https://abc.com"
+		}
+	},
+	"values": {
+		"current": {
+			"value": "aB"
+		}
+	}
+}

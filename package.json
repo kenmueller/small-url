@@ -1,0 +1,8 @@
+{
+	"name": "small-url",
+	"scripts": {
+		"clean": "rm -rf .firebase && rm -rf public/build && rm -rf functions/lib",
+		"deploy": "npm run clean && npm i -C public && npm update -C public && npm i -C functions && npm update -C functions && npm run build -C public && firebase deploy && npm run clean"
+	},
+	"private": true
+}

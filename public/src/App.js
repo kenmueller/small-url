@@ -27,12 +27,17 @@ export default class extends React.Component {
 	}
 	
 	calculateOutput = url =>
-		firestore.collection('urls').where('destination', '==', url).get().then(({ empty: isNew, docs }) => ({
-			urlExtension: isNew
-				? firestore.doc('values/current').get().then(current => current.get('value'))
-				: docs[0].get('source'),
+		firestore.collection('urls').where('destination', '==', url).get().then(({ empty: isNew, docs }) =>
 			isNew
-		}))
+				? firestore.doc('values/current').get().then(current => ({
+					urlExtension: current.get('value'),
+					isNew
+				}))
+				: {
+					urlExtension: docs[0].get('source'),
+					isNew: false
+				}
+		)
 	
 	calculateNextSource = currentSource => {
 		const parts = currentSource.split('')
